@@ -1,17 +1,16 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
+    "github.com/K0725/task-tracker/database"
+    "github.com/K0725/task-tracker/routes"
 )
 
-func main(){
-	r := gin.Default()
+func main() {
+    r := gin.Default()
+    database.ConnectDB()
 
-	r.GET("/", func(c *gin.Context){
-		c.JSON(200, gin.H{
-			"message": "Hello World",
-		})
-	})
+    routes.RegisterTaskRoutes(r) // 👈 Register your /tasks routes
 
-	r.Run()
+    r.Run() // :8080
 }

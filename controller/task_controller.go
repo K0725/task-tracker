@@ -1,8 +1,8 @@
-package main
+package controller
 
 import (
 	"github.com/K0725/task-tracker/database"
-	"github.com/K0725/task-tracker/controllers"
+	"github.com/K0725/task-tracker/controller"
 	"github.com/gin-gonic/gin"	
 )
 
@@ -11,7 +11,7 @@ func main(){
 	r := gin.Default()
 	database.ConnectDB()
 
-	r.POST("/tasks", controllers.CreateTask)
+	r.POST("/tasks", controller.CreateTask)
 
 	r.Run()
 }
